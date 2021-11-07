@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
@@ -8,10 +8,40 @@ function App() {
   return (
     <div className="App">
       <h2>Module No: 45_7-Advance state, component state hook and set state Method</h2>
+      <h3>45-8 (Advanced) Load Dynamic Data, Api Call Useeffect Integrate State</h3>
      <Counter></Counter>
+     <ExternalUsers></ExternalUsers>
     
     </div>
   );
+}
+
+
+function ExternalUsers () {
+  const [users, setUsers] = useState([]);
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  }, []) 
+
+  return (
+    <div>
+      <h3>External Users</h3>
+      {
+        users.map(user =><User name={user.name} >{user.name}</User>)
+      }
+    </div>
+  )
+}
+
+function User(props) {
+  return (
+    <div>
+      <h2>name: {props.name}</h2>
+      <p>email: {props.email}</p>
+    </div>
+  )
 }
 
 function Counter() {
@@ -27,6 +57,40 @@ function Counter() {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function counterAccount() {
 //   const [count, setCount] = useState(0);
