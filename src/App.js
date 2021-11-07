@@ -29,7 +29,7 @@ function ExternalUsers () {
     <div>
       <h3>External Users</h3>
       {
-        users.map(user =><User name={user.name} >{user.name}</User>)
+        users.map(user =><User name={user.name} email={user.email} ></User>)
       }
     </div>
   )
@@ -37,9 +37,9 @@ function ExternalUsers () {
 
 function User(props) {
   return (
-    <div>
-      <h2>name: {props.name}</h2>
-      <p>email: {props.email}</p>
+    <div className="product">
+      <h2>Name: {props.name}</h2>
+      <p>Email: {props.email}</p>
     </div>
   )
 }
